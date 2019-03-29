@@ -1,8 +1,20 @@
 # Change Log
 
-## [v0.3.0](https://github.com/ndege/shortr-slim/tree/v0.3.0)
+## [v0.1.1](https://github.com/ndege/shortr-slim/tree/v0.1.0)
 
-[Full Changelog](ttps://github.com/ndege/shortr-slim/compare/v0.2.0...v0.3.0)
+[Full Changelog](ttps://github.com/ndege/shortr-slim/compare/v0.1.0...v0.1.1)
+
+**Implemented enhancements:**
+
+* By no finding valid slug at database redirect request ot default site.
+
+**Minor enhancements**
+
+* Adapts `.travis.yml` removing PHP 7.0 and adding PHP 7.3
+
+## [v0.1.0](https://github.com/ndege/shortr-slim/tree/v0.1.0)
+
+[Full Changelog](ttps://github.com/ndege/shortr-slim/compare/v0.0.2...v0.1.0)
 
 **Implemented enhancements:**
 
@@ -16,9 +28,9 @@
 
 * Add JSON_PRETTY_PRINT to response messages
 
-## [v0.2.0](https://github.com/ndege/shortr-slim/tree/v0.2.0)
+## [v0.0.2](https://github.com/ndege/shortr-slim/tree/v0.0.2)
 
-[Full Changelog](ttps://github.com/ndege/shortr-slim/compare/v0.1.0...v0.2.0)
+[Full Changelog](ttps://github.com/ndege/shortr-slim/compare/v0.0.1...v0.0.2)
 
 **Implemented enhancements:**
 
@@ -26,7 +38,7 @@
 * Set up migration script for `shortr` table.
 * Remove sql script at `install\db\database.sql`
 
-## [v0.1.0](https://github.com/ndege/shortr-slim/tree/v0.1.0)
+## [v0.0.1](https://github.com/ndege/shortr-slim/tree/v0.0.1)
 
 **Implemented enhancements:**
 

@@ -24,9 +24,6 @@ return [
         // App Settings
         'app' => [
             // Redirect to url if no slug set
-            'defaultRedirect' => '',
-            // Baseurl of shortener service
-            'serviceUrl' => '',
             'defaultRedirect' => 'http://website.domain.tdl',
             // Baseurl of shortener service
             'serviceUrl' => 'http://domain.tdl',

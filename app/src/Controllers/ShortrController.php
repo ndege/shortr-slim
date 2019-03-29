@@ -30,6 +30,7 @@ use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
+use ShortrSlim\Exceptions\NotFoundException;
 use ShortrSlim\Helpers\HashHelper;
 use ShortrSlim\Helpers\IntegrityHelper;
 use ShortrSlim\Models\Shortr;
@@ -183,7 +184,15 @@ final class ShortrController
             // 2. Check if the slug exists in the database
             $shortr = Shortr::where('slug', $args['slug'])->first();
             if (0 == count($shortr)) {
-                throw new \Exception('slug not found');
+                // 2.1. Try to redirect to default
+                if (isset($this->config['defaultRedirect'])
+                    && strlen($this->config['defaultRedirect']) > 0) {
+                    return $response->withRedirect(
+                        $this->config['defaultRedirect'],
+                        301
+                    );
+                }
+                throw new NotFoundException('slug not found');
             }
             // 3. If the slug (and thus the URL) exist, update the hit counter
             Shortr::where('slug', $args['slug'])->increment('hits');
@@ -191,6 +200,12 @@ final class ShortrController
             return $response->withRedirect(
                 $shortr['url'],
                 301
+            );
+        } catch (NotFoundException $e) {
+            return $response->withJson(
+                ['msg' => $e->getMessage()],
+                404,
+                JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
             );
         } catch (\Exception $e) {
             return $response->withJson(

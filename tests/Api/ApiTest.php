@@ -129,4 +129,24 @@ class ApiTest extends ApiTestCase
             json_decode($response->getBody())->msg
         );
     }
+
+    /**
+     * Test if a slug failed page will be redirected to default.
+     *
+     * @access public
+     */
+    public function testASlugFailedRedirectToDefault()
+    {
+        $this->withMiddleware = false;
+        $response = $this->runApp(
+            'GET',
+            '/xyz1234'
+        );
+        $this->assertEquals(301, $response->getStatusCode());
+        // Then assert that we have a valid url in header Location.
+        $this->assertRegExp(
+            '/^https?:\/\/(?:[-A-Za-z0-9]+\.)+[A-Za-z]{2,6}$/',
+            ($response->getHeader('Location'))[0]
+        );
+    }
 }
