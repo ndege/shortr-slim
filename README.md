@@ -35,6 +35,31 @@ vendor/bin/phinx seed:run
 
 Set your server's document root to the `public/` directory.
 
+## Docker 
+
+It is also possible to run ShortrSlim as Dockerimage. Build and run the image via:
+
+```bash
+# Build the dockerimage with latest tag
+docker build -t shortr-slim:latest .
+# Run the image
+docker run --rm -p "80:80" --name shortr-slim shortr-slim:latest
+```
+
+### Development
+
+For **development** purposes use Dockerimage.dev which can be started with `docker-compose`. 
+
+```bash
+docker-compose up --build
+# Log in for docker shell of application
+docker exec -it shortrslim_app_1 /bin/sh 
+```
+
+Image for development will install additionally `require-dev` libraries with PHPUnit, CodeSniffer and PHPLint as well as PHP library XDebug for debugging.
+
+By running the dev image it will set up database and populate table with some data.
+
 ## Usage
 
 | Requests        | Variables                                 | Type   | Response  							   | Token
@@ -59,8 +84,6 @@ Run tests for shortr-slim by.
 ```bash
 composer test
 ```
-
-
 
 ## Notes
 

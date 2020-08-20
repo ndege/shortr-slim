@@ -1,3 +1,19 @@
+#!/bin/sh
+
+##############
+#  devtools
+##############
+
+set -ex
+
+export CONFIG_DIR=/var/www/html/config
+
+if [ ! -d ${CONFIG_DIR} ]; then
+    mkdir ${CONFIG_DIR}
+fi
+
+if [ ! -f ${CONFIG_DIR}/settings.php ]; then
+cat << EOF > ${CONFIG_DIR}/settings.php
 <?php
 return [
     'settings' => [
@@ -13,7 +29,7 @@ return [
         // DB settings
         'db' => [
             'driver' => 'mysql',
-            'host' => 'localhost',
+            'host' => 'db',
             'database' => 'shortr',
             'username' => 'shortener',
             'password' => 'changeme',
@@ -36,3 +52,17 @@ return [
         ]
     ]
 ];
+EOF
+fi
+
+if [ -z "$JWT_SECRET" ]; then
+    echo "[info] Generate JWT_SECRET token"
+    export JWT_SECRET=$(tr -dc 'a-zA-Z0-9~!@#$%^&*_()+}{?></";.,[]=-' < /dev/urandom | fold -w 32 | head -n 1)
+fi
+
+sed -i "s|'database'\s=>.*|'database' => '${MYSQL_DATABASE}',|" ${CONFIG_DIR}/settings.php
+sed -i "s|'username'\s=>.*|'username' => '${MYSQL_USER}',|" ${CONFIG_DIR}/settings.php
+sed -i "s|'password'\s=>.*|'password' => '${MYSQL_PASSWORD}',|" ${CONFIG_DIR}/settings.php
+sed -i "s|'defaultRedirect'\s=>.*|'defaultRedirect' => '${REDIRECT_URL}',|" ${CONFIG_DIR}/settings.php
+sed -i "s|'serviceUrl'\s=>.*|'serviceUrl' => '${SERVICE_URL}',|" ${CONFIG_DIR}/settings.php
+sed -i "s|'jwtSecret'\s=>.*|'jwtSecret' => '${JWT_SECRET}',|" ${CONFIG_DIR}/settings.php

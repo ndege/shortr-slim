@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+DOCKERHOST=$(ip route show | grep -e ^default | awk -F" " '{ print $3 }')
+BUILD_DIR="/tmp/build"
+LOG_DIR="/var/log"
+
+for i in `ls -A ${BUILD_DIR}`; do
+	echo "Building $i..."
+	source "${BUILD_DIR}/$i"
+done
+
+rm -rf /var/cache/apk/* && rm -rf /tmp/*

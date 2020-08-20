@@ -1,0 +1,16 @@
+#!/bin/sh
+
+############
+#  php-fpm
+############
+
+set -e
+
+cat >/usr/local/etc/php/php.ini <<EOF
+memory_limit = 500M
+max_execution_time = 30
+zlib.output_compression = On
+date.timezone = Europe/Berlin
+upload_max_filesize = 1M
+post_max_size = 1M
+EOF

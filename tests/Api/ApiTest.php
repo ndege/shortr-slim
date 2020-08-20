@@ -119,7 +119,7 @@ class ApiTest extends ApiTestCase
         $response = $this->runApp(
             'POST',
             '/shortr',
-            ['url' => 'http://dev.test.io']
+            ['url' => 'http://domain.tdl']
         );
         $this->assertEquals(201, $response->getStatusCode());
         // Then assert that we have three string sequence separated by dot returned
@@ -145,7 +145,7 @@ class ApiTest extends ApiTestCase
         $this->assertEquals(301, $response->getStatusCode());
         // Then assert that we have a valid url in header Location.
         $this->assertRegExp(
-            '/^https?:\/\/(?:[-A-Za-z0-9]+\.)+[A-Za-z]{2,6}$/',
+            '/^https?:\/\/(?:[-A-Za-z0-9]+)\.?([A-Za-z]{2,6})?$/',
             ($response->getHeader('Location'))[0]
         );
     }

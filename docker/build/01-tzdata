@@ -1,0 +1,14 @@
+#!/bin/sh
+
+############
+#  tzdata
+############
+
+set -e
+
+cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
+echo "${TIMEZONE}" >  /etc/timezone
+
+date
+
+apk del --update --no-cache tzdata

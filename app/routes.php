@@ -8,7 +8,6 @@ $app->post(
     '/auth',
     ShortrAuthController::class.':authenticateAction'
 );
-
 $app->post(
     '/shortr',
     ShortrController::class.':generateAction'

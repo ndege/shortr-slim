@@ -1,0 +1,18 @@
+#!/bin/sh
+
+#############
+#  supervisor
+#############
+
+set -e
+
+if [ ${APP_ENV} == "dev" ]; then
+    sleep 3
+    echo "Install dev environment"
+    cd /var/www/html
+    echo "Create database structure and seed some data"
+    vendor/bin/phinx migrate -e dev
+    vendor/bin/phinx seed:run -e dev
+    echo "Run PHPUnit tests"
+    vendor/bin/phpunit
+fi

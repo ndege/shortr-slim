@@ -1,10 +1,27 @@
 # Change Log
 
+## [v0.2.0](https://github.com/ndege/shortr-slim/tree/v0.2.0)
+
+[Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.1.1...v0.2.0)
+
+**Implemented enhancements**
+
+* Dockerize ShortrSlim
+* Adds production image as Dockerfile and development image Dockerfile.dev via docker-compose
+
+**Minor enhancements**
+
+* Adapts `.travis.yml` adding PHP 7.4
+
+**Fixed bugs**
+
+* Fixing false countable type of database object with count() at ShortrController::redirectAction() 
+
 ## [v0.1.1](https://github.com/ndege/shortr-slim/tree/v0.1.0)
 
-[Full Changelog](ttps://github.com/ndege/shortr-slim/compare/v0.1.0...v0.1.1)
+[Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.1.0...v0.1.1)
 
-**Implemented enhancements:**
+**Implemented enhancements**
 
 * By no finding valid slug at database redirect request ot default site.
 
@@ -14,9 +31,9 @@
 
 ## [v0.1.0](https://github.com/ndege/shortr-slim/tree/v0.1.0)
 
-[Full Changelog](ttps://github.com/ndege/shortr-slim/compare/v0.0.2...v0.1.0)
+[Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.0.2...v0.1.0)
 
-**Implemented enhancements:**
+**Implemented enhancements**
 
 * Add authorization via JWT token and set up middleware `slim-jwt-auth`
 * Authorization with POST request via `/auth` with username and password
@@ -32,7 +49,7 @@
 
 [Full Changelog](ttps://github.com/ndege/shortr-slim/compare/v0.0.1...v0.0.2)
 
-**Implemented enhancements:**
+**Implemented enhancements**
 
 * Using [Phinx](https://phinx.org) as database migration tool.
 * Set up migration script for `shortr` table.
@@ -40,7 +57,7 @@
 
 ## [v0.0.1](https://github.com/ndege/shortr-slim/tree/v0.0.1)
 
-**Implemented enhancements:**
+**Implemented enhancements**
 
 * Create ShortrSlim app in [PHPSlim v3](https://www.slimframework.com/) environment.
 * Default configured redirect if only baseUrl is set.
@@ -50,4 +67,4 @@
 * Implement some validation check. Limited interval to create new short url per ip. Check if url scheme is valid.
 * Add licence  headers, README, and changelog.
 
-**Fixed bugs:**
+**Fixed bugs**

@@ -183,7 +183,7 @@ final class ShortrController
             }
             // 2. Check if the slug exists in the database
             $shortr = Shortr::where('slug', $args['slug'])->first();
-            if (0 == count($shortr)) {
+            if ($shortr == null) {
                 // 2.1. Try to redirect to default
                 if (isset($this->config['defaultRedirect'])
                     && strlen($this->config['defaultRedirect']) > 0) {

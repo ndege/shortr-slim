@@ -1,0 +1,12 @@
+*
+!CHANGELOG.md
+!composer.json
+!composer.lock
+!phinx.php
+!phpunit.xml.dist
+!app
+!docker
+!install
+!log
+!public
+!test

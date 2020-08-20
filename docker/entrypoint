@@ -1,0 +1,28 @@
+#!/bin/sh
+
+DOCKERHOST=$(ip route show | grep -e ^default | awk -F" " '{ print $3 }')
+
+##
+## setup defaults
+##
+RUNDIR="/tmp/run"
+
+
+# Set up running environment
+for i in `ls -A ${RUNDIR}`; do
+    echo "[info] Preparing $i for start"
+    source "${RUNDIR}/$i"
+done
+
+case "$1" in
+    run)
+        echo "[info] Starting supervisord"
+        /usr/bin/supervisord -c /etc/supervisor.d/supervisord.conf
+        ;;
+    *)
+        echo "$0: ignoring entrypoint for command $1"
+        ;;
+
+esac
+
+exit 0
