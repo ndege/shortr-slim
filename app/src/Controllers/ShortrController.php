@@ -31,8 +31,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 use ShortrSlim\Exceptions\NotFoundException;
-use ShortrSlim\Exceptions\UnauthorizedException;
-use ShortrSlim\Helpers\AuthHelper;
 use ShortrSlim\Helpers\HashHelper;
 use ShortrSlim\Helpers\IntegrityHelper;
 use ShortrSlim\Models\Shortr;
@@ -81,10 +79,6 @@ final class ShortrController
     public function generateAction(Request $request, Response $response)
     {
         try {
-            // Check if scope is vaild
-            $auth = new AuthHelper();
-            $auth->checkScope('USE_SHORTR', $request);
-
             // 1. Check if parameter url is set
             if (null == ($url = $request->getParam('url'))) {
                 throw new \Exception(
@@ -156,12 +150,6 @@ final class ShortrController
             return $response->withJson(
                 ['msg' => $this->config['serviceUrl'] .'/'. $slug],
                 201,
-                JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
-            );
-        } catch (UnauthorizedException $e) {
-            return $response->withJson(
-                ['msg' => $e->getMessage()],
-                401,
                 JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
             );
         } catch (\Exception $e) {

@@ -40,10 +40,3 @@ $container[ShortrSlim\Controllers\ShortrAuthController::class] = function ($c) {
         $c->get('settings')
     );
 };
-
-$container[ShortrSlim\Controllers\ShortrClientController::class] = function ($c) {
-    return new ShortrSlim\Controllers\ShortrClientController(
-        $c->get('db'),
-        $c->get('settings')
-    );
-};

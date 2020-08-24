@@ -142,7 +142,6 @@ final class ShortrAuthController
                     "iss"     => $this->config['serviceUrl'],
                     "iat"     => time(),
                     "exp"     => time() + ($this->config['jwtTokenLifetime']),
-                    "scope"   => json_decode($users['scope']),
                     "context" => [
                         "user" => $users['user'],
                         "userId" => $users['id']

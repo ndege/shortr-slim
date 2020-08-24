@@ -17,17 +17,11 @@ class TableUsersSeeder extends AbstractSeed
         $data = [
             [
                 'user' => 'admin',
-                'password'  => password_hash("admin", PASSWORD_BCRYPT),
-                'scope' => json_encode([
-                    'USE_SHORTR', 'CREATE_CLIENT', 'CHANGE_CLIENT', 'REMOVE_CLIENT'
-                ])
+                'password'  => password_hash("admin", PASSWORD_BCRYPT)
             ],
             [
                 'user' => 'client',
-                'password'  => password_hash("changeme", PASSWORD_BCRYPT),
-                'scope' => json_encode([
-                    'USE_SHORTR'
-                ])
+                'password'  => password_hash("changeme", PASSWORD_BCRYPT)
             ]
         ];
         $shortr = $this->table('users');

@@ -3,8 +3,7 @@ FROM php:7.3-fpm-alpine
 LABEL authors="Frank Morgner <frnkmrgnr@gmail.com>"
 EXPOSE 80
 
-ENV DOCKERIZE_VERSION="v0.6.1" \
-    APP_ENV="dev" \
+ENV APP_ENV="dev" \
     TIMEZONE=${TIMEZONE:-"Europe/Berlin"} \
     MYSQL_DATABASE=${MYSQL_DATABASE:-"shortr"} \
     MYSQL_USER=${MYSQL_USER:-"shortener"} \
@@ -17,7 +16,6 @@ RUN apk add --update --no-cache \
   icu-dev \
   git \
   nginx \
-  openssl \
   supervisor \
   tzdata \
   && (rm "/tmp/"* 2>/dev/null || true) && (rm -rf /var/cache/apk/* 2>/dev/null || true)
