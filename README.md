@@ -60,11 +60,14 @@ By running the dev image it will set up database and populate table with some da
 
 ## Usage
 
-| Requests        | Variables                                 | Type   | Response  							   | Token
-|-----------------|-------------------------------------------|--------|-----------------------------------------| ------
-| `/{shortr_url}` |                                           | GET    | Redirect 301                            | -
-| `/auth`         | {'username':{user},'password':{password}} | POST   | {'url':{shortr_url},'status':{2xx}}     | -
-| `/shortr`       | {'url':{url_to_shorten}}                  | POST   | {'token':{bearer_token},'status':{2xx}} | X
+| Description          | Requests            | Variables                                 | Type   | Response  							   | Token
+|----------------------|---------------------|-------------------------------------------|--------|-----------------------------------------| ------
+| Redirect slug to url | `/{shortr_url}`     |                                           | GET    | Redirect 301                            | -
+| Authenticate user    | `/auth`             | {'username':{user},'password':{password}} | POST   | {'url':{shortr_url},'status':{2xx}}     | -
+| Create new user      | `/client`           | {'username':{user},'password':{password},'admin': {boolean}}  | POST   | {'status':{2xx}}    | X
+| Change user          | `/client/{username}`| {'password':{password},'admin': {boolean}}| POST   | {'status':{2xx}}                        | X
+| Delete user          | `/client/{username}`|                                           | DELETE | {'status':{2xx}}                        | X
+| Create new slug      | `/shortr`           | {'url':{url_to_shorten}}                  | POST   | {'token':{bearer_token},'status':{2xx}} | X
 
 
 Please note error response will return {'msg':{error_msg},'status':{4xx}}

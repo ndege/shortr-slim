@@ -4,7 +4,7 @@
 $app->add(new \Slim\Middleware\JwtAuthentication([
     "secure" => true,
     "relaxed" => ["localhost", "127.0.0.1", "dev.shortr.local"],
-    "path" => "/shortr",
+    "path" => ["/shortr", "/client"],
     "secret" => $settings['settings']['app']['jwtSecret'],
     "error" => function ($request, $response, $arguments) {
         return $response->withJson(

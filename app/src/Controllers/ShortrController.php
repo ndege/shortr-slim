@@ -190,7 +190,7 @@ final class ShortrController
             if (empty($args['slug']
                 || 0 == preg_match('/[0-9a-Z]+/', $args['slug']))
             ) {
-                throw new \Exception('slug not exists or valid');
+                throw new \Exception('Slug not exists or valid');
             }
             // 2. Check if the slug exists in the database
             $shortr = Shortr::where('slug', $args['slug'])->first();

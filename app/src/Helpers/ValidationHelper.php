@@ -35,5 +35,89 @@ namespace ShortrSlim\Helpers;
  */
 class ValidationHelper
 {
+    /**
+     * Accepted pattern for username
+     *
+     * @var string $acceptedPatternOfUsername
+     * @access protected
+     */
+    protected $acceptedPatternOfUsername = "/^[a-zA-Z0-9_-]*$/";
 
+    /**
+     * Accepted pattern for password
+     *
+     * @var string $acceptedPatternOfPassword
+     * @access protected
+     */
+    protected $acceptedPatternOfPassword =
+        "/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&~,._\-+*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/";
+
+    /**
+     * Minimum of chars for password
+     *
+     * @var int $minimumLengthOfPassword
+     * @access protected
+     */
+    protected $minimumLengthOfPassword = 12;
+
+    /**
+     * Minimum of chars for username
+     *
+     * @var int $minimumLengthOfPassword
+     * @access protected
+     */
+    protected $minimumLengthOfUsername = 4;
+
+    /**
+     * Validate password for minimum of char length and hash
+     *
+     * @param string $password
+     *
+     * @return string password
+     * @access private
+     * @throws InvalidArgumentException
+     */
+    public function validatePassword(string $password): string
+    {
+        if (strlen($password) < $this->minimumLengthOfPassword) {
+            throw new \InvalidArgumentException(
+                'Minimum of char length of ' .$this->minimumLengthOfPassword. ' for password is necessary.'
+            );
+        }
+
+        /** @to-do regex for password complexity */
+        if (0 === preg_match($this->acceptedPatternOfPassword, $password)) {
+            throw new \InvalidArgumentException(
+                'Pattern of password has to consist of big and small letters, numbers and special chars.'
+            );
+        }
+        return $password;
+    }
+
+    /**
+     * Validate password for minimum of char length and hash
+     *
+     * @param string $username
+     *
+     * @return string $username
+     * @access private
+     * @throws InvalidArgumentException
+     */
+    public function validateUsername(string $username): string
+    {
+        if (strlen($username) < $this->minimumLengthOfUsername) {
+            throw new \InvalidArgumentException(
+                'Minimum of char length of ' .$this->minimumLengthOfUsername. ' for password is necessary.'
+            );
+        }
+
+        //var_dump(preg_match($this->acceptedPatternOfUsername, $username)); exit;
+
+        if (0 === preg_match($this->acceptedPatternOfUsername, $username)) {
+            throw new \InvalidArgumentException(
+                'Pattern of username has to consist of ' . $this->acceptedPatternOfUsername
+            );
+        }
+        return $username;
+    }
 }

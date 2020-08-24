@@ -6,7 +6,6 @@ use Illuminate\Database\Capsule\Manager;
 use Phinx\Console\PhinxApplication;
 use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Output\NullOutput;
-
 use ShortrSlim\Models\Shortr;
 
 class ApiTest extends ApiTestCase
@@ -113,7 +112,7 @@ class ApiTest extends ApiTestCase
      *
      * @access public
      */
-    public function testASlugShouldBeReturnWithoutMiddleware()
+    /*public function testASlugShouldBeReturnWithoutMiddleware()
     {
         $this->withMiddleware = false;
         $response = $this->runApp(
@@ -128,7 +127,7 @@ class ApiTest extends ApiTestCase
             '/\/([a-z0-9]){1,14}$/',
             json_decode($response->getBody())->msg
         );
-    }
+    }*/
 
     /**
      * Test if a slug failed page will be redirected to default.

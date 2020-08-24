@@ -37,7 +37,7 @@
 * Replaces sleeping by waiting of db container to run init of app
 * Path fixing to load migration and seeding at ./phinx.php configuration file
 * Actualize composer hash
-* Minor wording at docs app7srxc/Helpers/HashHelper 
+* Minor wording at docs app/src/Helpers/HashHelper 
 
 ## [v0.2.0](https://github.com/ndege/shortr-slim/tree/v0.2.0)
 

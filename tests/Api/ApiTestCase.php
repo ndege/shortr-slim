@@ -2,12 +2,15 @@
 
 namespace Tests\Api;
 
+use PHPUnit\Framework\TestCase;
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\Environment;
 
-class ApiTestCase extends \PHPUnit_Framework_TestCase
+use ShortrSlim\Helpers\AuthHelper;
+
+class ApiTestCase extends TestCase
 {
     /**
      * Use middleware when running application?

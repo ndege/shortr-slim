@@ -141,6 +141,7 @@ final class ShortrAuthController
                     "jti"     => (new Base62)->encode(random_bytes(16)),
                     "iss"     => $this->config['serviceUrl'],
                     "iat"     => time(),
+                    "nbf"     => time(),
                     "exp"     => time() + ($this->config['jwtTokenLifetime']),
                     "scope"   => json_decode($users['scope']),
                     "context" => [

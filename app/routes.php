@@ -2,20 +2,21 @@
 
 use ShortrSlim\Controllers\ShortrController;
 use ShortrSlim\Controllers\ShortrAuthController;
+use ShortrSlim\Controllers\ShortrClientController;
 
 // Routes
 // Client routes
-$app->put(
-    '/client',
-    ShortrClientController::class.':createClient'
-);
 $app->post(
-    '/client/{slug:[0-9a-z\-_]+}',
-    ShortrClientController::class.':changeClient'
+    '/client/{username:[0-9A-Za-z_-]+}',
+    ShortrClientController::class.':changeClientAction'
 );
 $app->delete(
-    '/client/{slug:[0-9a-z\-_]+}',
-    ShortrClientController::class.':removeClient'
+    '/client/{username:[0-9A-Za-z_-]+}',
+    ShortrClientController::class.':removeClientAction'
+);
+$app->post(
+    '/client',
+    ShortrClientController::class.':createClientAction'
 );
 // Base routes
 $app->post(

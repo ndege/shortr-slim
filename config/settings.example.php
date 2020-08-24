@@ -32,7 +32,7 @@ return [
             // JWT secret hash
             'jwtSecret' => 'your_jwt_secret_hash',
             // Lifetime of JWT token in seconds
-            'jwtTokenLifetime' => 3600 * 24 * 15
+            'jwtTokenLifetime' => 3600 * 24
         ]
     ]
 ];
