@@ -4,6 +4,7 @@ services:
       build:
         context: ./
         dockerfile: Dockerfile.dev
+      restart: on-failure
       ports:
         - "80:80"
         - "443:443"
@@ -16,13 +17,11 @@ services:
         - db
     db:
       image: mariadb:10.4
-      volumes:
-        - data_db:/var/lib/mysql
+      ports:
+        - 3306:3306
       environment:
         MYSQL_ROOT_PASSWORD: adminpw
         MYSQL_DATABASE: shortr
         MYSQL_USER: shortener
         MYSQL_PASSWORD: changeme
-volumes:
-  data_db:
-    driver: local
+

@@ -39,7 +39,7 @@ class HashHelper
      *
      * @param int $length   Length of slug.
      *
-     * @return string       Rendom slug hash
+     * @return string       Random slug hash
      * @access public
      * @todo Length and charset can be configured.
      */

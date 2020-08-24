@@ -1,5 +1,17 @@
 # Change Log
 
+## [v0.2.1](https://github.com/ndege/shortr-slim/tree/v0.2.1)
+
+[Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.2.0...v0.2.1)
+
+**Fixed bugs**
+
+* Fixing running migration and seeding of docker development docker image
+* Replaces sleeping by waiting of db container to run init of app
+* Path fixing to load migration and seeding at ./phinx.php configuration file
+* Actualize composer hash
+* Minor wording at docs app7srxc/Helpers/HashHelper 
+
 ## [v0.2.0](https://github.com/ndege/shortr-slim/tree/v0.2.0)
 
 [Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.1.1...v0.2.0)

@@ -2,8 +2,8 @@
 $config = require_once __DIR__.'/config/settings.php';
 return [
     'paths' => [
-        'migrations' =>  __DIR__ . 'install/src/Migrations',
-        'seeds' => __DIR__ .  'install/src/Seeds'
+        'migrations' =>  __DIR__ . '/install/src/Migrations',
+        'seeds' => __DIR__ .  '/install/src/Seeds'
     ],
     'migration_base_class' => '\ShortrSlim\Migrations\Migration',
     'environments' => [
