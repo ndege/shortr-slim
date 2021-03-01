@@ -1,0 +1,5 @@
+/config/settings.php
+/vendor
+.idea
+composer.lock
+supervisord.pid

@@ -15,9 +15,20 @@ if [ ${APP_ENV} == "dev" ]; then
     done
     echo "Install dev environment"
     cd /var/www/html
+    chown -R www-data /var/www/html
+    echo "Resolve composer dependencies"
+    su www-data -s /bin/sh -c "composer install --prefer-dist"
+
     echo "Create database structure and seed some data"
     vendor/bin/phinx migrate -e dev
     vendor/bin/phinx seed:run -e dev
     echo "Run PHPUnit tests"
     vendor/bin/phpunit
+else
+    cd /var/www/html
+    chown -R www-data /var/www/html
+    echo "Resolve composer dependencies"
+    su www-data -s /bin/sh -c "composer install --prefer-dist --no-dev --no-scripts"
 fi
+
+rm -rf ~www-data/.composer /usr/local/bin/composer

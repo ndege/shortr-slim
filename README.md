@@ -73,7 +73,7 @@ Please note error response will return {'msg':{error_msg},'status':{4xx}}
 
 ##### Examples:
 ```bash
-curl -X POST "domain.tdl/auth" -H "Content-Type: application/json" -d "{\"user\":\"test\",\"password\":\"pass\"}"
+curl -X POST "domain.tdl/auth" -H "Content-Type: application/json" -d "{\"username\":\"test\",\"password\":\"pass\"}"
 curl -X POST "domain.tdl/shortr" -H "Content-Type: application/json" -H "Authorization: bearer {token}" -d "{\"url\":\"domain_to_shorten.tdl\"}"
 ```
 

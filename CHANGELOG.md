@@ -1,5 +1,22 @@
 # Change Log
 
+## [v0.3.0](https://github.com/ndege/shortr-slim/tree/v0.3.0)
+
+[Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.2.1...v0.3.0)
+
+**Security issues**
+
+* Updates composer library of "illuminate/database" to v6.20.14 and higher
+* Sets 7.3 as minimum version for PHP
+
+**Implemented enhancements**
+
+* Removes dependency of hash from downloading composer library at Docker image 
+
+**Fixed bugs**
+
+* Fixin defect Docker image for development
+
 ## [v0.2.1](https://github.com/ndege/shortr-slim/tree/v0.2.1)
 
 [Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.2.0...v0.2.1)

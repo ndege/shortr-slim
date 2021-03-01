@@ -7,13 +7,14 @@
 set -ex
 
 curl -L https://getcomposer.org/installer > composer-setup.php \
-  && php -r "if (hash_file('SHA384', 'composer-setup.php') === '572cb359b56ad9ae52f9c23d29d4b19a040af10d6635642e646a7caa7b96de717ce683bd797a92ce99e5929cc51e7d5f') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1);} echo PHP_EOL;" \
+  && curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
+  && php -r "if (hash_file('SHA384', 'composer-setup.php') === trim(file_get_contents('/tmp/composer-setup.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1);} echo PHP_EOL;" \
   && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
   && rm composer-setup.php
 
 if [ ${APP_ENV} == "dev" ]; then
     apk add --no-cache $PHPIZE_DEPS \
-        && pecl install xdebug-2.7.0 \
+        && pecl install xdebug-2.9.6 \
         && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
         && sed -i '1 a xdebug.remote_autostart=true' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
         && sed -i '1 a xdebug.remote_mode=req' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
