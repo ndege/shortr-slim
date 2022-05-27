@@ -23,6 +23,7 @@ class TableShortrSeeder extends AbstractSeed
             ]
         ];
         $shortr = $this->table('shortr');
+        $shortr->truncate();
         $shortr->insert($data)->save();
     }
 }

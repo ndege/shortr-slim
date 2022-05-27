@@ -57,7 +57,7 @@ fi
 
 if [ -z "$JWT_SECRET" ]; then
     echo "[info] Generate JWT_SECRET token"
-    export JWT_SECRET=$(tr -dc 'a-zA-Z0-9~!@#$%^&*_()+}{?></";.,[]=-' < /dev/urandom | fold -w 32 | head -n 1)
+    export JWT_SECRET=$(tr -dc 'a-zA-Z0-9~!@#%^&*_()+}{?></";.,[]=-' < /dev/urandom | fold -w 32 | head -n 1)
 fi
 
 sed -i "s|'database'\s=>.*|'database' => '${MYSQL_DATABASE}',|" ${CONFIG_DIR}/settings.php

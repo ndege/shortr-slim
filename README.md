@@ -52,8 +52,6 @@ For **development** purposes use Dockerimage.dev which can be started with `dock
 
 ```bash
 docker-compose up --build
-# Log in for docker shell of application
-docker exec -it shortrslim_app_1 /bin/sh 
 ```
 
 Image for development will install additionally `require-dev` libraries with PHPUnit, CodeSniffer and PHPLint as well as PHP library XDebug for debugging.

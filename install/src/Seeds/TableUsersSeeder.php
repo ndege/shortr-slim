@@ -25,6 +25,7 @@ class TableUsersSeeder extends AbstractSeed
             ]
         ];
         $shortr = $this->table('users');
+        $shortr->truncate();
         $shortr->insert($data)->save();
     }
 }

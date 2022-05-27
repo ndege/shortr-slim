@@ -14,13 +14,12 @@ curl -L https://getcomposer.org/installer > composer-setup.php \
 
 if [ ${APP_ENV} == "dev" ]; then
     apk add --no-cache $PHPIZE_DEPS \
-        && pecl install xdebug-2.9.6 \
+        && pecl install xdebug-3.1.4 \
         && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-        && sed -i '1 a xdebug.remote_autostart=true' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-        && sed -i '1 a xdebug.remote_mode=req' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-        && sed -i '1 a xdebug.remote_handler=dbgp' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-        && sed -i '1 a xdebug.remote_connect_back=1 ' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-        && sed -i '1 a xdebug.remote_port=9001' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-        && sed -i '1 a xdebug.remote_enable=1' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+        && sed -i '1 a xdebug.mode=debug' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+        && sed -i '1 a xdebug.start_with_request=trigger' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+        && sed -i '1 a xdebug.client_host=' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+        && sed -i '1 a xdebug.client_port=9001' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+        && sed -i '1 a xdebug.max_nesting_level=400' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
         && docker-php-ext-enable xdebug
 fi

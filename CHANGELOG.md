@@ -1,5 +1,15 @@
 # Change Log
 
+## [v0.3.1](https://github.com/ndege/shortr-slim/tree/v0.3.1)
+
+[Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.3.0...v0.3.1)
+
+**Refactoring**
+* Adjusts and fixes docker image for new base image _php:7.4-fpm-alpine_
+
+**Securtiy issues**
+* Sets 7.4 as minimum version for PHP
+
 ## [v0.3.0](https://github.com/ndege/shortr-slim/tree/v0.3.0)
 
 [Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.2.1...v0.3.0)

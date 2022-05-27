@@ -11,17 +11,21 @@ services:
         - "9001:9001"
       volumes:
         - .:/var/www/html
-      links:
-        - db
       depends_on:
         - db
+      links:
+        - db
+
     db:
-      image: mariadb:10.4
-      ports:
-        - 3306:3306
+      image: mariadb:10.5
+      restart: on-failure
+      volumes:
+        - shortr-db:/var/lib/mysql:z
       environment:
         MYSQL_ROOT_PASSWORD: adminpw
         MYSQL_DATABASE: shortr
         MYSQL_USER: shortener
         MYSQL_PASSWORD: changeme
 
+volumes:
+  shortr-db:

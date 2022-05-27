@@ -1,0 +1,21 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: build
+    image: plugins/docker
+    settings:
+      registry: nexus.ubl.li:11443
+      repo: nexus.ubl.li:11443/shortr-slim
+      username:
+        from_secret: nexus_username
+      password:
+        from_secret: nexus_password
+      debug: true
+      tags:
+        - latest
+        - ${DRONE_TAG##v}
+
+trigger:
+  ref:
+    - refs/tags/v*
