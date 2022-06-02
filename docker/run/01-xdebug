@@ -7,4 +7,6 @@
 set -e
 
 # Set XDebug Host
-sed -e "s/^\(xdebug\.client_host\).*\$/\1 = ${DOCKERHOST}/" -i /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+if [ ${APP_ENV} == "dev" ]; then
+  sed -e "s/^\(xdebug\.client_host\).*\$/\1 = ${DOCKERHOST}/" -i /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+fi
