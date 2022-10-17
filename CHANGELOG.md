@@ -1,5 +1,20 @@
 # Change Log
 
+## [v0.4.0](https://github.com/ndege/shortr-slim/tree/v0.4.0)
+
+[Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.3.2...v0.4.0)
+
+**Implemented enhancements**
+* Create, change and remove clients of api
+* Adds scopes to api calls which enables personalized rules of calls
+
+## [v0.3.2](https://github.com/ndege/shortr-slim/tree/v0.3.2)
+
+[Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.3.1...v0.3.2)
+
+**Fixed bugs**
+* Fixin defect XDebug at Docker image for development
+
 ## [v0.3.1](https://github.com/ndege/shortr-slim/tree/v0.3.1)
 
 [Full Changelog](https://github.com/ndege/shortr-slim/compare/v0.3.0...v0.3.1)
@@ -105,5 +120,3 @@
 * By same url return already existing slug
 * Implement some validation check. Limited interval to create new short url per ip. Check if url scheme is valid.
 * Add licence  headers, README, and changelog.
-
-**Fixed bugs**
